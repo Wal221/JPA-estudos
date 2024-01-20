@@ -21,9 +21,17 @@ public class Programa {
 		//também ja esta implementado
 		EntityManager em = enf.createEntityManager();
 		
+		//Quando o banco de dados não faz uma simples operação que e de leitura no banco de dados
+		//temos que iniciar uma transção
+		em.getTransaction().begin();
 		em.persist(p1);
 		em.persist(p2);
 		em.persist(p3);
+		
+		//Para confirma a transação
+		em.getTransaction().commit();
+	    System.out.println("Pronto!!");
+		
 		
 		System.out.println(p1);
 		System.out.println(p2);
